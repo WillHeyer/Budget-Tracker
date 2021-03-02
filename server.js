@@ -9,10 +9,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static("public"));
-//mongodb://<dbuser>:<dbpassword>@ds133627.mlab.com:33627/heroku_fzxcrdvs
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
+//mongodb:
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budgetTracker", {
   useNewUrlParser: true,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
 });
 
 // routes
